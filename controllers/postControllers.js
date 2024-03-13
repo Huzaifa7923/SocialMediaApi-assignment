@@ -84,7 +84,9 @@ const createPost=async(req,res)=>{
 const updatePost=async(req,res)=>{
     try{
         const cachedData=await redisClient.get(req.params.id)
+        console.log('cachedData '+cachedData)
         if(cachedData){
+            await redisClient.del('allPosts')
             await redisClient.del(req.params.id)
         }
         const post=await Post.findById(req.params.id)
@@ -113,6 +115,7 @@ const updatePost=async(req,res)=>{
 const deletePost=async(req,res)=>{
     try{
         const cachedData=await redisClient.get(req.params.id)
+        await redisClient.del('allPosts')
         if(cachedData){
             await redisClient.del(req.params.id)
         }

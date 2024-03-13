@@ -40,7 +40,7 @@ const validateUserRegistration=(data)=>{
     if (data.profilePicture) 
     data.profilePicture = sanitizeInput(data.profilePicture);
 
-    return userSchema.validate(data);
+    return updateUserSchema.validate(data);
 }
 
 const validatePost=(data)=>{

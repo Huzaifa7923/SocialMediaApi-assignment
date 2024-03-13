@@ -38,7 +38,7 @@ const protect =async (req, res, next) => {
       next();
     } catch (error) {
       console.log(error);
-      res.status(500).json({error:err})
+      res.status(500).json({error:error})
     }
   }
   if (!token) {
